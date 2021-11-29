@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\RiderProjects\\TeamFinder\\TeamFinder.csproj": {}
+    "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj": {}
   },
   "projects": {
-    "D:\\Code\\RiderProjects\\TeamFinder\\TeamFinder.csproj": {
+    "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
+        "projectUniqueName": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
         "projectName": "TeamFinder",
-        "projectPath": "D:\\Code\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\RiderProjects\\TeamFinder\\obj\\",
+        "projectPath": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
+        "packagesPath": "C:\\Users\\ded\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ded\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -74,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.2.21505.57\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
