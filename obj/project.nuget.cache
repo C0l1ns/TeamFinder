@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XuZcWoT6w3wskMA7bey+adR9pW//oD+VWes7DGYP0kvFC0atUxxDwptYxFYrMzgjTgA7pIBGKdfeszx9gGedwg==",
+  "dgSpecHash": "06x76uW4HOXlEdPOBf5t6sUm80ICj4TlL66dVwawVRgwT55iNyZpBr6u89chMB/zrPGbP167DfvUHFj7dO4CkA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\ded\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.0-preview.3.21201.2\\microsoft.entityframeworkcore.analyzers.6.0.0-preview.3.21201.2.nupkg.sha512",
     "C:\\Users\\ded\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.0-preview.3.21201.2\\microsoft.entityframeworkcore.design.6.0.0-preview.3.21201.2.nupkg.sha512",
     "C:\\Users\\ded\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.0-preview.3.21201.2\\microsoft.entityframeworkcore.relational.6.0.0-preview.3.21201.2.nupkg.sha512",
+    "C:\\Users\\ded\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.12\\microsoft.entityframeworkcore.tools.5.0.12.nupkg.sha512",
     "C:\\Users\\ded\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0-preview.3.21201.4\\microsoft.extensions.caching.abstractions.6.0.0-preview.3.21201.4.nupkg.sha512",
     "C:\\Users\\ded\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.0-preview.3.21201.4\\microsoft.extensions.caching.memory.6.0.0-preview.3.21201.4.nupkg.sha512",
     "C:\\Users\\ded\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0-preview.3.21201.4\\microsoft.extensions.configuration.abstractions.6.0.0-preview.3.21201.4.nupkg.sha512",
