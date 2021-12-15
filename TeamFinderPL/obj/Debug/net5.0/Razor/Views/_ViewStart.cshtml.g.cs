@@ -21,13 +21,13 @@ using TeamFinder;
 #nullable disable
 #nullable restore
 #line 2 "C:\TeamFinder\TeamFinder\TeamFinderPL\Views\_ViewImports.cshtml"
-using TeamFinderDAL.Models.Entities;
+using TeamFinder.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"77a2804b95fd303a20a56ec194ea6ca59278fafa", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a0623a96dbb927855cc0f9715f90f672f9128a75", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ab3ade49f346e259b1c4a4aa60dfe0657359370e", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

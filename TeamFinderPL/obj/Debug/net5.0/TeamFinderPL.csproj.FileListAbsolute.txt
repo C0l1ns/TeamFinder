@@ -105,3 +105,16 @@ C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\TeamFinderPL.dll
 C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\ref\TeamFinderPL.dll
 C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\TeamFinderPL.pdb
 C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\TeamFinderPL.genruntimeconfig.cache
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\Razor\Views\BoardGame\Create.cshtml.g.cs
+C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\Razor\Views\BoardGame\Index.cshtml.g.cs
+C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\Razor\Views\Home\LoginPage.cshtml.g.cs
+C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\Razor\Views\Lobby\Create.cshtml.g.cs
+C:\TeamFinder\TeamFinder\TeamFinderPL\obj\Debug\net5.0\Razor\Views\Lobby\Index.cshtml.g.cs

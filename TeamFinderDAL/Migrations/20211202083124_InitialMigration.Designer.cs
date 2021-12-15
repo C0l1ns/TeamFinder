@@ -8,7 +8,7 @@ using TeamFinder.Data;
 
 namespace TeamFinder.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(TeamFinderDbContext))]
     [Migration("20211202083124_InitialMigration")]
     partial class InitialMigration
     {

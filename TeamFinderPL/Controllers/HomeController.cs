@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TeamFinder.Models;
-using TeamFinderPL.Models;
-using ErrorViewModel = TeamFinderPL.Models.ErrorViewModel;
 
 namespace TeamFinder.Controllers
 {

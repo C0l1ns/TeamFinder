@@ -7,7 +7,7 @@ using TeamFinder.Data;
 
 namespace TeamFinder.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(TeamFinderDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -40,13 +40,16 @@ namespace TeamFinder.Migrations
 
                     b.Property<string>("BGameName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<byte>("Difficulty")
                         .HasMaxLength(5)
                         .HasColumnType("tinyint unsigned");
 
                     b.HasKey("BGameId");
+
+                    b.HasIndex("BGameName")
+                        .IsUnique();
 
                     b.ToTable("BoardGames");
                 });

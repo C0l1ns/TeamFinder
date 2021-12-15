@@ -1,0 +1,43 @@
+﻿@model TeamFinderDAL.Models.Entities.BoardGame
+
+<form method="post" asp-action="PostBoardGame">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Add Board Game</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="BGameName"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Difficulty"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <input asp-for="BGameName" class="form-control"/>
+                        <span asp-validation-for="BGameName" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Difficulty" class="form-control"/>
+                        <span asp-validation-for="Difficulty" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Create"/>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

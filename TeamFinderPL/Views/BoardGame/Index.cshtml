@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TeamFinderDAL.Models.Entities.BoardGame>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Board Games</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="BoardGame" asp-action="Create" class="btn btn-primary">Add Board Game</a>
+        </div>
+    </div>
+    
+    @if (Model.Any())
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Difficulty</th>
+                @* <th>Game Date</th> TODO: bg tags*@
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var bGame in Model)
+            {
+                <tr>
+                    <td width="50%">@bGame.BGameName</td>
+                    <td width="50%">@bGame.Difficulty</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
