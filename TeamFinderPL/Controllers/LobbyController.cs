@@ -2,21 +2,23 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Logging;
-using TeamFinder.Data;
-using TeamFinder.Models;
 using TeamFinder.Models.ViewModels;
-using TeamFinderDAL.Models.Entities;
+using TeamFinderDAL;
+using TeamFinderDAL.Entities;
+using TeamFinderDAL.Interfaces;
+using TeamFinderDAL.Repositories;
 
-namespace TeamFinder.Controllers
+namespace TeamFinderPL.Controllers
 {
     public class LobbyController : Controller
     {
         private readonly TeamFinderDbContext _db;
+        private readonly IGenericRepository<Lobby> _lobbyRepository;
 
-        public LobbyController(TeamFinderDbContext db)
+        public LobbyController(TeamFinderDbContext db, IGenericRepository<Lobby> lobbyRepository)
         {
             _db = db;
+            _lobbyRepository = lobbyRepository;
         }
 
         public IActionResult Index()
@@ -27,7 +29,7 @@ namespace TeamFinder.Controllers
             {
                 lobby.HostedGame = _db.BoardGames.FirstOrDefault(bg => bg.BGameId == lobby.HostedGameId);
             }
-            
+
             return View(lobbyList);
         }
 
@@ -50,7 +52,7 @@ namespace TeamFinder.Controllers
         public IActionResult PostLobby(LobbyVM obj)
         {
             obj.Lobby.HostId = 1;
-            
+
             if (ModelState.IsValid)
             {
                 _db.Lobbies.Add(obj.Lobby);

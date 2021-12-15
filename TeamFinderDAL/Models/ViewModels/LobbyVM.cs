@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using TeamFinderDAL.Models.Entities;
+using TeamFinderDAL.Entities;
 
 namespace TeamFinder.Models.ViewModels
 {

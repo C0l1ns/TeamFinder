@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TeamFinder.Models;
-using TeamFinder.Models.EntityConfigurations;
-using TeamFinderDAL.Models.Entities;
+using TeamFinder.Models.Configurations;
+using TeamFinderDAL.Entities;
 
-namespace TeamFinder.Data
+namespace TeamFinderDAL
 {
     public class TeamFinderDbContext : DbContext
     {

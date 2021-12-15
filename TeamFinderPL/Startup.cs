@@ -9,7 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TeamFinder.Data;
+using TeamFinderDAL;
+using TeamFinderDAL.Entities;
+using TeamFinderDAL.Interfaces;
+using TeamFinderDAL.Repositories;
 
 namespace TeamFinder
 {
@@ -28,7 +31,8 @@ namespace TeamFinder
             services.AddDbContext<TeamFinderDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
             );
-
+            services.AddTransient<IGenericRepository<Lobby>, GenericRepository<Lobby>>();
+            services.AddTransient<IGenericRepository<BoardGame>, GenericRepository<BoardGame>>();
             services.AddControllersWithViews();
         }
 

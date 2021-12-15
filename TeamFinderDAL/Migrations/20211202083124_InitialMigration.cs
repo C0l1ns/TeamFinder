@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
-namespace TeamFinder.Migrations
+namespace TeamFinderDAL.Migrations
 {
     public partial class InitialMigration : Migration
     {

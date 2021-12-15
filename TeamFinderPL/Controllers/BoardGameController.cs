@@ -1,24 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TeamFinder.Data;
-using TeamFinder.Models;
-using TeamFinderDAL.Models.Entities;
+using TeamFinderDAL;
+using TeamFinderDAL.Entities;
+using TeamFinderDAL.Interfaces;
+using TeamFinderDAL.Repositories;
 
-namespace TeamFinder.Controllers
+namespace TeamFinderPL.Controllers
 {
     public class BoardGameController : Controller
     {
         private readonly TeamFinderDbContext _db;
+        private readonly IGenericRepository<BoardGame> _boardGameRepository;
         
-        public BoardGameController(TeamFinderDbContext db)
+        public BoardGameController(TeamFinderDbContext db, IGenericRepository<BoardGame> boardGameRepository)
         {
             _db = db;
+            _boardGameRepository = boardGameRepository;
         }
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-           var bGameList = _db.BoardGames.ToList();
+           var bGameList = await _boardGameRepository.GetAll();
 
             return View(bGameList);
         }
