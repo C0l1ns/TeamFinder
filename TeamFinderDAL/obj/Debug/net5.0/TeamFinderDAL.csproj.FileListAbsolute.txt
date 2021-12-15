@@ -1,0 +1,12 @@
+C:\TeamFinder\TeamFinder\TeamFinderDAL\bin\Debug\net5.0\TeamFinderDAL.deps.json
+C:\TeamFinder\TeamFinder\TeamFinderDAL\bin\Debug\net5.0\TeamFinderDAL.dll
+C:\TeamFinder\TeamFinder\TeamFinderDAL\bin\Debug\net5.0\ref\TeamFinderDAL.dll
+C:\TeamFinder\TeamFinder\TeamFinderDAL\bin\Debug\net5.0\TeamFinderDAL.pdb
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.csproj.AssemblyReference.cache
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.AssemblyInfoInputs.cache
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.AssemblyInfo.cs
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.csproj.CoreCompileInputs.cache
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.dll
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\ref\TeamFinderDAL.dll
+C:\TeamFinder\TeamFinder\TeamFinderDAL\obj\Debug\net5.0\TeamFinderDAL.pdb
