@@ -8,12 +8,12 @@ namespace TeamFinderDAL.Repositories
 {
     public class GenericRepository<T>:IGenericRepository<T> where T:class
     {
-        private readonly TeamFinderDbContext _teamFinderDbContext;
+        private readonly TeamFinderDbContext _context;
         protected readonly DbSet<T> _dbSet;
-        public GenericRepository(TeamFinderDbContext teamFinderDbContext)
+        public GenericRepository(TeamFinderDbContext context)
         {
-            _teamFinderDbContext = teamFinderDbContext;
-            _dbSet = teamFinderDbContext.Set<T>();
+            _context = context;
+            _dbSet = context.Set<T>();
         }
 
         public Task<List<T>> GetAll()
@@ -26,9 +26,9 @@ namespace TeamFinderDAL.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<T> Create(T entity)
+        public void Create(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Add(entity);
         }
 
         public void Update(T entity)
@@ -39,6 +39,11 @@ namespace TeamFinderDAL.Repositories
         public void Delete(T entity)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
         }
     }
 }

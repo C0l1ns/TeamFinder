@@ -10,12 +10,10 @@ namespace TeamFinderPL.Controllers
 {
     public class BoardGameController : Controller
     {
-        private readonly TeamFinderDbContext _db;
-        private readonly IGenericRepository<BoardGame> _boardGameRepository;
+        private readonly IBoardGameRepository _boardGameRepository;
         
-        public BoardGameController(TeamFinderDbContext db, IGenericRepository<BoardGame> boardGameRepository)
+        public BoardGameController(IBoardGameRepository boardGameRepository)
         {
-            _db = db;
             _boardGameRepository = boardGameRepository;
         }
         
@@ -34,16 +32,13 @@ namespace TeamFinderPL.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostBoardGame(BoardGame obj)
+        public IActionResult PostBoardGame(BoardGame entity)
         {
-            if (ModelState.IsValid)
-            {
-                _db.BoardGames.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            if (!ModelState.IsValid) return RedirectToAction("Create");
+            _boardGameRepository.Create(entity);
+            _boardGameRepository.Save();
+            return RedirectToAction("Index");
 
-            return RedirectToAction("Create");
         }
     }
 }

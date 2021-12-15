@@ -13,6 +13,7 @@ using TeamFinderDAL;
 using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
 using TeamFinderDAL.Repositories;
+using TeamFinderPL.Configurations;
 
 namespace TeamFinder
 {
@@ -24,19 +25,16 @@ namespace TeamFinder
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TeamFinderDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
             );
-            services.AddTransient<IGenericRepository<Lobby>, GenericRepository<Lobby>>();
-            services.AddTransient<IGenericRepository<BoardGame>, GenericRepository<BoardGame>>();
+            services.AddDataProvider(); // метод розширення для підключення репозиторіїв, подібні методи знаходитимуться в папці Configurations
             services.AddControllersWithViews();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -46,7 +44,6 @@ namespace TeamFinder
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

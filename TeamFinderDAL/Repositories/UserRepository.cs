@@ -5,7 +5,7 @@ namespace TeamFinderDAL.Repositories
 {
     public class UserRepository:GenericRepository<User>
     {
-        public UserRepository(TeamFinderDbContext teamFinderDbContext) : base(teamFinderDbContext)
+        public UserRepository(TeamFinderDbContext context) : base(context)
         {
         }
         

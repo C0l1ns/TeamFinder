@@ -13,9 +13,9 @@ namespace TeamFinderPL.Controllers
     public class LobbyController : Controller
     {
         private readonly TeamFinderDbContext _db;
-        private readonly IGenericRepository<Lobby> _lobbyRepository;
+        private readonly ILobbyRepository _lobbyRepository;
 
-        public LobbyController(TeamFinderDbContext db, IGenericRepository<Lobby> lobbyRepository)
+        public LobbyController(TeamFinderDbContext db, ILobbyRepository lobbyRepository)
         {
             _db = db;
             _lobbyRepository = lobbyRepository;
