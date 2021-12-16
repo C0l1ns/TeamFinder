@@ -12,7 +12,7 @@ namespace TeamFinderPL.Controllers
 {
     public class LobbyController : Controller
     {
-        private readonly TeamFinderDbContext _db;
+        private readonly TeamFinderDbContext _db; // змінити всі методи де використовується котнекст
         private readonly ILobbyRepository _lobbyRepository;
 
         public LobbyController(TeamFinderDbContext db, ILobbyRepository lobbyRepository)

@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_12_11_2021_11_32_[Default_Changelist]" date="1639215181528" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.TeamFinder/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2021_11_32_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/11/2021 11:32 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="obj/project.nuget.cache" />
+    <option name="AFTER_PATH" value="obj/project.nuget.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.TeamFinder/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2021_11_32_[Default_Changelist]/project.nuget.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/TeamFinder.assets.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/TeamFinder.assets.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.TeamFinder/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2021_11_32_[Default_Changelist]/TeamFinder.assets.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/TeamFinder.csproj.AssemblyReference.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/TeamFinder.csproj.AssemblyReference.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.TeamFinder/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2021_11_32_[Default_Changelist]/TeamFinder.csproj.AssemblyReference.cache" />
+  </binary>
+</changelist>
