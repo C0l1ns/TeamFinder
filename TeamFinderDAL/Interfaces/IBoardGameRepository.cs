@@ -2,7 +2,7 @@ using TeamFinderDAL.Entities;
 
 namespace TeamFinderDAL.Interfaces
 {
-    public interface IBoardGameRepository:IGenericRepository<BoardGame>
+    public interface IBoardGameRepository : IGenericRepository<BoardGame>
     {
         
     }
