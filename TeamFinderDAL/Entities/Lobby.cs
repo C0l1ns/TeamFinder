@@ -6,9 +6,9 @@ namespace TeamFinderDAL.Entities
 {
     public class Lobby
     {
-        public int LobbyId { get; set; }
+        public int Id { get; set; }
         
-        public string LobbyName { get; set; }
+        public string Name { get; set; }
         
         public string About { get; set; }
         

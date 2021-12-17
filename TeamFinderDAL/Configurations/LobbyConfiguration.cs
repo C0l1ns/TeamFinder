@@ -8,9 +8,9 @@ namespace TeamFinder.Models.Configurations
     {
         public void Configure(EntityTypeBuilder<Lobby> builder)
         {
-            builder.HasKey(l => l.LobbyId);
+            builder.HasKey(l => l.Id);
 
-            builder.Property(l => l.LobbyName)
+            builder.Property(l => l.Name)
                 .IsRequired()
                 .HasMaxLength(30);
 
