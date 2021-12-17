@@ -8,9 +8,9 @@ namespace TeamFinder.Models.Configurations
     {
         public void Configure(EntityTypeBuilder<Message> builder)
         {
-            builder.HasKey(m => m.MessageId);
+            builder.HasKey(m => m.Id);
 
-            builder.Property(m => m.MessageText)
+            builder.Property(m => m.Text)
                 .IsRequired()
                 .HasMaxLength(255);
             
