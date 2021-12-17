@@ -5,9 +5,9 @@ namespace TeamFinderDAL.Entities
 {
     public class BoardGame
     {
-        public int BGameId { get; set; }
+        public int Id { get; set; }
 
-        public string BGameName { get; set; }
+        public string Name { get; set; }
         
         public byte Difficulty { get; set; }
         

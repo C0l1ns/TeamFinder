@@ -27,7 +27,7 @@ namespace TeamFinderPL.Controllers
 
             foreach (var lobby in lobbyList)
             {
-                lobby.HostedGame = _db.BoardGames.FirstOrDefault(bg => bg.BGameId == lobby.HostedGameId);
+                lobby.HostedGame = _db.BoardGames.FirstOrDefault(bg => bg.Id == lobby.HostedGameId);
             }
 
             return View(lobbyList);
@@ -40,8 +40,8 @@ namespace TeamFinderPL.Controllers
                 Lobby = new Lobby(),
                 TypeDropDown = _db.BoardGames.Select(bg => new SelectListItem
                 {
-                    Text = bg.BGameName,
-                    Value = bg.BGameId.ToString(),
+                    Text = bg.Name,
+                    Value = bg.Id.ToString(),
                 })
             };
 

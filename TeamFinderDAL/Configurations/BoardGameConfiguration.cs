@@ -9,13 +9,12 @@ namespace TeamFinder.Models.Configurations
     {
         public void Configure(EntityTypeBuilder<BoardGame> builder)
         {
-            builder.HasKey(bg => bg.BGameId);
+            builder.HasKey(bg => bg.Id);
 
-            builder.Property(bg => bg.BGameName)
+            builder.Property(bg => bg.Name)
                 .IsRequired();
 
-            builder.Property(bg => bg.Difficulty)
-                .HasMaxLength(5);
+            builder.Property(bg => bg.Difficulty);
 
 
             builder.HasMany(bg => bg.Tags)
