@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
 
 namespace TeamFinderDAL.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T>
+        where T : class, IEntity
     {
         private readonly TeamFinderDbContext _context;
-        protected readonly DbSet<T> _dbSet;
+        
+        private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(TeamFinderDbContext context)
+        protected GenericRepository(TeamFinderDbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();
@@ -23,10 +26,9 @@ namespace TeamFinderDAL.Repositories
             return _dbSet.ToListAsync();
         }
 
-        // TODO
         public Task<T> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _dbSet.SingleOrDefaultAsync(x => x.Id == id);
         }
         public void Create(T entity)
         {

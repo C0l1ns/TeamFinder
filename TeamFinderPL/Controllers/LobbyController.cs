@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TeamFinder.Models.ViewModels;
@@ -23,14 +24,16 @@ namespace TeamFinderPL.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Lobby> lobbyList = _db.Lobbies.ToList();
+            // IEnumerable<Lobby> lobbyList = _db.Lobbies.ToList();
+            //
+            // foreach (var lobby in lobbyList)
+            // {
+            //     lobby.HostedGame = _db.BoardGames.FirstOrDefault(bg => bg.Id == lobby.HostedGameId);
+            // }
 
-            foreach (var lobby in lobbyList)
-            {
-                lobby.HostedGame = _db.BoardGames.FirstOrDefault(bg => bg.Id == lobby.HostedGameId);
-            }
+            Task<List<Lobby>> lobbyList = _lobbyRepository.GetAll();
 
-            return View(lobbyList);
+            return View(lobbyList.Result);
         }
 
         public IActionResult Create()

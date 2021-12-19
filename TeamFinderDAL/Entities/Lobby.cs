@@ -4,7 +4,7 @@ using TeamFinder.Models;
 
 namespace TeamFinderDAL.Entities
 {
-    public class Lobby
+    public class Lobby : IEntity
     {
         public int Id { get; set; }
         

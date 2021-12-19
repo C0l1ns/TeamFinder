@@ -2,7 +2,7 @@ using TeamFinderDAL.Entities;
 
 namespace TeamFinderDAL.Interfaces
 {
-    public interface ILobbyRepository:IGenericRepository<Lobby>
+    public interface ILobbyRepository : IGenericRepository<Lobby>
     {
         
     }

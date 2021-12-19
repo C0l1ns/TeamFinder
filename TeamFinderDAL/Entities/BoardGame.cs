@@ -3,7 +3,7 @@ using TeamFinder.Models;
 
 namespace TeamFinderDAL.Entities
 {
-    public class BoardGame
+    public class BoardGame : IEntity
     {
         public int Id { get; set; }
 
