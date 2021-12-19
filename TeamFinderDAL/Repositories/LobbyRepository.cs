@@ -10,12 +10,6 @@ namespace TeamFinderDAL.Repositories
     {
         public LobbyRepository(TeamFinderDbContext context) : base(context)
         {
-            
         }
-
-        // public Task<Lobby> GetById(int id)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
     }
 }
