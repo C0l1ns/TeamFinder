@@ -30,19 +30,20 @@ namespace TeamFinderDAL.Repositories
         {
             return _dbSet.SingleOrDefaultAsync(x => x.Id == id);
         }
+        
         public void Create(T entity)
         {
             _dbSet.Add(entity);
         }
-        // TODO
+        
         public void Update(T entity)
         {
-            throw new System.NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
         }
-        // TODO    
+
         public void Delete(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Remove(entity);
         }
 
         public void Save()
