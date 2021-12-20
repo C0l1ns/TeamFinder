@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,27 +14,25 @@ namespace TeamFinderPL.Controllers
 {
     public class LobbyController : Controller
     {
-        private readonly TeamFinderDbContext _db; // змінити всі методи де використовується котнекст
         private readonly ILobbyRepository _lobbyRepository;
-
-        public LobbyController(TeamFinderDbContext db, ILobbyRepository lobbyRepository)
+        private readonly IBoardGameRepository _boardGameRepository;
+        
+        public LobbyController(ILobbyRepository lobbyRepository, IBoardGameRepository boardGameRepository)
         {
-            _db = db;
             _lobbyRepository = lobbyRepository;
+            _boardGameRepository = boardGameRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            // IEnumerable<Lobby> lobbyList = _db.Lobbies.ToList();
-            //
-            // foreach (var lobby in lobbyList)
-            // {
-            //     lobby.HostedGame = _db.BoardGames.FirstOrDefault(bg => bg.Id == lobby.HostedGameId);
-            // }
+            List<Lobby> lobbyList = await _lobbyRepository.GetAll();
+            
+            foreach (var lobby in lobbyList)
+            {
+                lobby.HostedGame = await _boardGameRepository.GetById(lobby.HostedGameId);
+            }
 
-            Task<List<Lobby>> lobbyList = _lobbyRepository.GetAll();
-
-            return View(lobbyList.Result);
+            return View(lobbyList);
         }
 
         public IActionResult Create()
@@ -41,25 +40,26 @@ namespace TeamFinderPL.Controllers
             LobbyVM lobbyVm = new LobbyVM()
             {
                 Lobby = new Lobby(),
-                TypeDropDown = _db.BoardGames.Select(bg => new SelectListItem
-                {
-                    Text = bg.Name,
-                    Value = bg.Id.ToString(),
-                })
+                // TypeDropDown = _lobbyRepository
+                // TypeDropDown = _lo.BoardGames.Select(bg => new SelectListItem
+                // {
+                //     Text = bg.Name,
+                //     Value = bg.Id.ToString(),
+                // })
             };
-
+        
             return View(lobbyVm);
         }
 
         [HttpPost]
         public IActionResult PostLobby(LobbyVM obj)
         {
-            obj.Lobby.HostId = 1;
+            obj.Lobby.HostId = 1;   // TODO: забрати цей лютий кастиль коли буде авторизація
 
             if (ModelState.IsValid)
             {
-                _db.Lobbies.Add(obj.Lobby);
-                _db.SaveChanges();
+                _lobbyRepository.Create(obj.Lobby);
+                _lobbyRepository.Save();
                 return RedirectToAction("Index");
             }
 
