@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamFinder", "TeamFinder.csproj", "{4F98C1C6-852B-4F9A-B4B1-2A807181EE91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamFinderPL", "TeamFinderPL\TeamFinderPL.csproj", "{1DD78737-7AED-411F-889D-D3EA77E3CBC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamFinderDAL", "TeamFinderDAL\TeamFinderDAL.csproj", "{6F14DAFE-18E2-4FD7-A375-C89E52929FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamFinderBL", "TeamFinderBL\TeamFinderBL.csproj", "{59584177-756C-45F7-B646-349BFAE19E86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F98C1C6-852B-4F9A-B4B1-2A807181EE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F98C1C6-852B-4F9A-B4B1-2A807181EE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F98C1C6-852B-4F9A-B4B1-2A807181EE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F98C1C6-852B-4F9A-B4B1-2A807181EE91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD78737-7AED-411F-889D-D3EA77E3CBC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD78737-7AED-411F-889D-D3EA77E3CBC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD78737-7AED-411F-889D-D3EA77E3CBC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD78737-7AED-411F-889D-D3EA77E3CBC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F14DAFE-18E2-4FD7-A375-C89E52929FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F14DAFE-18E2-4FD7-A375-C89E52929FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F14DAFE-18E2-4FD7-A375-C89E52929FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F14DAFE-18E2-4FD7-A375-C89E52929FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59584177-756C-45F7-B646-349BFAE19E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59584177-756C-45F7-B646-349BFAE19E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59584177-756C-45F7-B646-349BFAE19E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59584177-756C-45F7-B646-349BFAE19E86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

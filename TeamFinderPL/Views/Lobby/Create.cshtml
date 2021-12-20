@@ -1,0 +1,58 @@
+﻿@model TeamFinder.Models.ViewModels.LobbyVM
+
+<form method="post" asp-action="PostLobby">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Host Lobby</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="Lobby.Name"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Lobby.HostedGame"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Lobby.GameDate"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Lobby.About"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <input asp-for="Lobby.Name" class="form-control"/>
+                        <span asp-validation-for="Lobby.Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <select asp-for="Lobby.HostedGameId" asp-items="@Model.TypeDropDown" class="form-control">
+                            <option selected>--Select Board Game--</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Lobby.GameDate" class="form-control"/>
+                        <span asp-validation-for="Lobby.GameDate" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Lobby.About" class="form-control"/>
+                        <span asp-validation-for="Lobby.About" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Create"/>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

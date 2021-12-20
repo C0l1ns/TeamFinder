@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TeamFinderDAL.Entities.Lobby>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lobbies</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Lobby" asp-action="Create" class="btn btn-primary">Host Lobby</a>
+        </div>
+    </div>
+    
+    @if (Model.Any())
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+            <tr>
+                <th>Lobby Name</th>
+                <th>Game Name</th>
+                <th>Game Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var lobby in Model)
+            {
+                <tr>
+                    <td width="30%">@lobby.Name</td>
+                    <td width="30%">@lobby.HostedGame.Name</td>
+                    <td width="30%">@lobby.GameDate</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
