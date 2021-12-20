@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\taras\\.nuget\\packages\\": {}
+    "C:\\Users\\ded\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\taras\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
+      "projectUniqueName": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
       "projectName": "TeamFinder",
-      "projectPath": "C:\\Users\\taras\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
-      "packagesPath": "C:\\Users\\taras\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\taras\\RiderProjects\\TeamFinder\\obj\\",
+      "projectPath": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\TeamFinder.csproj",
+      "packagesPath": "C:\\Users\\ded\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ded\\RiderProjects\\TeamFinder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\taras\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ded\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
