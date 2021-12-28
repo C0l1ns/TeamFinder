@@ -26,6 +26,9 @@ namespace TeamFinder.Models.Configurations
             builder.Property(u => u.Email)
                 .IsRequired();
 
+            builder.Property(u => u.Rating)
+                .IsRequired();
+
             
             builder.HasMany(u => u.ConnectedLobbies)
                 .WithMany(l => l.ConnectedUsers)

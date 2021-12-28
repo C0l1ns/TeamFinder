@@ -16,6 +16,8 @@ namespace TeamFinderDAL.Entities
 
         public string Email { get; set; }
 
+        public double Rating { get; set; }
+
         public IList<Lobby> ConnectedLobbies { get; set; }
         
         public IList<BoardGame> FavoriteGames { get; set; }
