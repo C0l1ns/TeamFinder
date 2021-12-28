@@ -73,11 +73,6 @@ namespace TeamFinderDAL.Migrations
                     b.Property<int>("HostedGameId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("HostId");
@@ -150,6 +145,9 @@ namespace TeamFinderDAL.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("double");
 
                     b.Property<string>("Username")
                         .IsRequired()

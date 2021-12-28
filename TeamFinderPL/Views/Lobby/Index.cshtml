@@ -15,7 +15,6 @@
         <table class="table table-bordered table-striped" style="width:100%">
             <thead>
             <tr>
-                <th>Lobby Name</th>
                 <th>Game Name</th>
                 <th>Game Date</th>
             </tr>
@@ -24,9 +23,8 @@
             @foreach (var lobby in Model)
             {
                 <tr>
-                    <td width="30%">@lobby.Name</td>
-                    <td width="30%">@lobby.HostedGame.Name</td>
-                    <td width="30%">@lobby.GameDate</td>
+                    <td width="50%">@lobby.HostedGame.Name</td>
+                    <td width="50%">@lobby.GameDate</td>
                 </tr>
             }
             </tbody>

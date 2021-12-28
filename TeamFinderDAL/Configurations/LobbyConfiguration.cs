@@ -10,10 +10,6 @@ namespace TeamFinder.Models.Configurations
         {
             builder.HasKey(l => l.Id);
 
-            builder.Property(l => l.Name)
-                .IsRequired()
-                .HasMaxLength(30);
-
             builder.Property(l => l.About)
                 .HasMaxLength(255);
             
