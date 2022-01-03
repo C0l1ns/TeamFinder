@@ -69,8 +69,9 @@ namespace TeamFinderPL.Controllers
 
 
         // [HttpDelete]
-        public IActionResult Delete(Lobby obj)
+        public async Task<IActionResult> Delete(int id)
         {
+            var obj = await _lobbyRepository.GetById(id);
             if (ModelState.IsValid)
             {
                 _lobbyRepository.Delete(obj);
