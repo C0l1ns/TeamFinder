@@ -31,8 +31,10 @@ namespace TeamFinder
             services.AddDbContext<TeamFinderDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
             );
-            services.AddDataProvider(); // метод розширення для підключення репозиторіїв, подібні методи знаходитимуться в папці Configurations
+            services.AddDataProvider();
+            services.AddServiceProvider();
             services.AddControllersWithViews();
+            
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
