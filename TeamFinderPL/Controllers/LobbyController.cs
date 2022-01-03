@@ -17,7 +17,7 @@ namespace TeamFinderPL.Controllers
     {
         private readonly ILobbyRepository _lobbyRepository;
         private readonly IBoardGameRepository _boardGameRepository;
-
+        
         public LobbyController(ILobbyRepository lobbyRepository, IBoardGameRepository boardGameRepository)
         {
             _lobbyRepository = lobbyRepository;
@@ -27,7 +27,7 @@ namespace TeamFinderPL.Controllers
         public async Task<IActionResult> Index()
         {
             List<Lobby> lobbyList = await _lobbyRepository.GetAll();
-
+            
             foreach (var lobby in lobbyList)
             {
                 lobby.HostedGame = await _boardGameRepository.GetById(lobby.HostedGameId);
@@ -50,7 +50,7 @@ namespace TeamFinderPL.Controllers
                         Value = bg.Id.ToString(),
                     })
             };
-
+        
             return View(lobbyVm);
         }
 
@@ -58,7 +58,6 @@ namespace TeamFinderPL.Controllers
         public IActionResult PostLobby(LobbyVM obj)
         {
 
-            
             // Console.Out.Write(obj.Lobby.HostId);
             
             if (ModelState.IsValid)

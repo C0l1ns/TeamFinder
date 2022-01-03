@@ -14,6 +14,10 @@ namespace TeamFinderDAL.Entities
 
         public string GameLocation { get; set; }
         
+        public byte MinNumberOfPlayers { get; set; }
+        
+        public byte MaxNumberOfPlayers { get; set; }
+        
         public IList<User> ConnectedUsers { get; set; }
 
         public int HostId { get; set; }
