@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TeamFinderBL\TeamFinderBL.csproj" />
       <ProjectReference Include="..\TeamFinderDAL\TeamFinderDAL.csproj" />
     </ItemGroup>
 
