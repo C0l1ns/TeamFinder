@@ -41,6 +41,12 @@ namespace TeamFinderDAL.Migrations
                     b.Property<byte>("Difficulty")
                         .HasColumnType("tinyint unsigned");
 
+                    b.Property<byte>("MaxNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<byte>("MinNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -72,6 +78,12 @@ namespace TeamFinderDAL.Migrations
 
                     b.Property<int>("HostedGameId")
                         .HasColumnType("int");
+
+                    b.Property<byte>("MaxNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<byte>("MinNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
 
                     b.HasKey("Id");
 

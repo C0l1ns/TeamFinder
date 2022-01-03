@@ -10,7 +10,11 @@ namespace TeamFinderDAL.Entities
         public string Name { get; set; }
         
         public byte Difficulty { get; set; }
+
+        public byte MinNumberOfPlayers { get; set; }
         
+        public byte MaxNumberOfPlayers { get; set; }
+
         public IList<Tag> Tags { get; set; }
 
         public IList<User> FavoredByUsers { get; set; }

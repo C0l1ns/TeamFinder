@@ -15,6 +15,10 @@ namespace TeamFinder.Models.Configurations
                 .IsRequired();
 
             builder.Property(bg => bg.Difficulty);
+            
+            builder.Property(bg => bg.MinNumberOfPlayers);
+
+            builder.Property(bg => bg.MaxNumberOfPlayers);
 
 
             builder.HasMany(bg => bg.Tags)

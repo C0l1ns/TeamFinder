@@ -18,7 +18,11 @@ namespace TeamFinder.Models.Configurations
             
             builder.Property(l => l.GameLocation)
                 .HasMaxLength(255);
-            
+
+            builder.Property(l => l.MinNumberOfPlayers);
+
+            builder.Property(l => l.MaxNumberOfPlayers);
+
 
             builder.HasMany(l => l.ConnectedUsers)
                 .WithMany(u => u.ConnectedLobbies);
