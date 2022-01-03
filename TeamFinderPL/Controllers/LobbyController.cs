@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,8 +57,10 @@ namespace TeamFinderPL.Controllers
         [HttpPost]
         public IActionResult PostLobby(LobbyVM obj)
         {
-            obj.Lobby.HostId = 1; // TODO: забрати цей лютий кастиль коли буде авторизація
 
+            
+            // Console.Out.Write(obj.Lobby.HostId);
+            
             if (ModelState.IsValid)
             {
                 _lobbyRepository.Create(obj.Lobby);
