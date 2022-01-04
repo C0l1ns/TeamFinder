@@ -80,5 +80,39 @@ namespace TeamFinderPL.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var obj = await _lobbyRepository.GetById(id);
+            
+            if(obj == null) return RedirectToAction("Index");
+
+            LobbyVM lobbyVm = new LobbyVM()
+            {
+                Lobby = obj,
+                TypeDropDown = _boardGameRepository
+                    .GetAll()
+                    .Result
+                    .Select(bg => new SelectListItem
+                    {
+                        Text = bg.Name,
+                        Value = bg.Id.ToString(),
+                    })
+            };
+        
+            return View(lobbyVm);
+        }
+        
+        public IActionResult UpdateLobby(LobbyVM obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _lobbyRepository.Update(obj.Lobby);
+                _lobbyRepository.Save();
+                return RedirectToAction("Index");
+            }
+            
+            return RedirectToAction("Update");
+        }
     }
 }

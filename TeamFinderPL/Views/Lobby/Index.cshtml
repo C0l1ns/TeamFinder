@@ -28,7 +28,7 @@
                     <td width="50%">@lobby.GameDate</td>
                     <td>
                         <div>Join</div>
-                        <div>Update</div>
+                        <a asp-controller="Lobby" asp-action="Update" asp-route-id="@lobby.Id" class="btn btn-primary">Update</a>
                         <a asp-controller="Lobby" asp-action="Delete" asp-route-id="@lobby.Id" class="btn btn-primary">Delete</a>
                     </td>
                 </tr>
