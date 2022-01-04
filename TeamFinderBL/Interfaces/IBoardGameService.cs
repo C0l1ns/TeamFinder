@@ -2,7 +2,7 @@
 
 namespace TeamFinderBL.Interfaces
 {
-    public interface ILobbyService : IGenericService<Lobby>
+    public interface IBoardGameService : IGenericService<BoardGame>
     {
     }
 }

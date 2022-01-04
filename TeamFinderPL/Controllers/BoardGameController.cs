@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TeamFinderDAL;
 using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
-using TeamFinderDAL.Repositories;
 
 namespace TeamFinderPL.Controllers
 {

@@ -7,50 +7,54 @@ using TeamFinderDAL.Interfaces;
 
 namespace TeamFinderBL.Services
 {
-    public class LobbyService:ILobbyService
+    public class LobbyService : ILobbyService
     {
         private readonly ILobbyRepository _lobbyRepository;
+
         public LobbyService(
             ILobbyRepository lobbyRepository)
         {
             _lobbyRepository = lobbyRepository;
         }
 
-        public int CreateLobby(Lobby lobby)
+        public int Create(Lobby lobby)
         {
             if (lobby == null)
             {
                 throw new NullReferenceException();
             }
+
             _lobbyRepository.Create(lobby);
             _lobbyRepository.Save();
             return lobby.Id;
         }
 
-        public async Task<IEnumerable<Lobby>> GetAllLobbies()
+        public async Task<IEnumerable<Lobby>> GetAll()
         {
             var lobbies = await _lobbyRepository.GetAll();
             return lobbies;
         }
 
-        public async Task<int> DeleteLobby(int id)
+        public async Task<int> Delete(int id)
         {
             var lobby = await _lobbyRepository.GetById(id);
             if (lobby == null)
             {
                 throw new NullReferenceException();
             }
+
             _lobbyRepository.Delete(lobby);
             _lobbyRepository.Save();
             return lobby.Id;
         }
 
-        public void UpdateLobby(int id, Lobby lobby)
+        public void Update(Lobby lobby)
         {
-            throw new System.NotImplementedException();
+            _lobbyRepository.Update(lobby);
+            _lobbyRepository.Save();
         }
 
-        public async Task<Lobby> GetLobbyById(int id)
+        public async Task<Lobby> GetById(int id)
         {
             var lobby = await _lobbyRepository.GetById(id);
             return lobby;

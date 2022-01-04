@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TeamFinder.Models.ViewModels;
 using TeamFinderBL.Interfaces;
-using TeamFinderDAL;
 using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
-using TeamFinderDAL.Repositories;
 
 namespace TeamFinderPL.Controllers
 {
@@ -29,7 +24,7 @@ namespace TeamFinderPL.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var lobbyList = (await _lobbyService.GetAllLobbies());
+            var lobbyList = (await _lobbyService.GetAll());
 
             foreach (var lobby in lobbyList)
             {
@@ -62,7 +57,7 @@ namespace TeamFinderPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                _lobbyService.CreateLobby(obj.Lobby);
+                _lobbyService.Create(obj.Lobby);
                 return RedirectToAction("Index");
             }
 
@@ -75,17 +70,17 @@ namespace TeamFinderPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = _lobbyService.DeleteLobby(id);
+                var result = _lobbyService.Delete(id);
             }
 
-            return RedirectToAction("Index");   
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Update(int id)
         {
-            var obj = await _lobbyRepository.GetById(id);
-            
-            if(obj == null) return RedirectToAction("Index");
+            var obj = await _lobbyService.GetById(id);
+
+            if (obj == null) return RedirectToAction("Index");
 
             LobbyVM lobbyVm = new LobbyVM()
             {
@@ -99,19 +94,18 @@ namespace TeamFinderPL.Controllers
                         Value = bg.Id.ToString(),
                     })
             };
-        
+
             return View(lobbyVm);
         }
-        
+
         public IActionResult UpdateLobby(LobbyVM obj)
         {
             if (ModelState.IsValid)
             {
-                _lobbyRepository.Update(obj.Lobby);
-                _lobbyRepository.Save();
+                _lobbyService.Update(obj.Lobby);
                 return RedirectToAction("Index");
             }
-            
+
             return RedirectToAction("Update");
         }
     }
