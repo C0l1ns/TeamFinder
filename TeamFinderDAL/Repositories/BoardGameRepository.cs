@@ -8,6 +8,5 @@ namespace TeamFinderDAL.Repositories
         public BoardGameRepository(TeamFinderDbContext context) : base(context)
         {
         }
-        
     }
 }

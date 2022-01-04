@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TeamFinder.Models.ViewModels;
-using TeamFinderDAL;
+using TeamFinderBL.Interfaces;
 using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
-using TeamFinderDAL.Repositories;
 
 namespace TeamFinderPL.Controllers
 {
     public class LobbyController : Controller
     {
-        private readonly ILobbyRepository _lobbyRepository;
+        private readonly ILobbyService _lobbyService;
         private readonly IBoardGameRepository _boardGameRepository;
 
-        public LobbyController(ILobbyRepository lobbyRepository, IBoardGameRepository boardGameRepository)
+        public LobbyController(
+            ILobbyService lobbyService,
+            IBoardGameRepository boardGameRepository)
         {
-            _lobbyRepository = lobbyRepository;
+            _lobbyService = lobbyService;
             _boardGameRepository = boardGameRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Lobby> lobbyList = await _lobbyRepository.GetAll();
+            var lobbyList = (await _lobbyService.GetAll());
 
             foreach (var lobby in lobbyList)
             {
@@ -59,8 +57,7 @@ namespace TeamFinderPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                _lobbyRepository.Create(obj.Lobby);
-                _lobbyRepository.Save();
+                _lobbyService.Create(obj.Lobby);
                 return RedirectToAction("Index");
             }
 
@@ -71,11 +68,9 @@ namespace TeamFinderPL.Controllers
         // [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var obj = await _lobbyRepository.GetById(id);
             if (ModelState.IsValid)
             {
-                _lobbyRepository.Delete(obj);
-                _lobbyRepository.Save();
+                var result = _lobbyService.Delete(id);
             }
 
             return RedirectToAction("Index");
@@ -83,9 +78,9 @@ namespace TeamFinderPL.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var obj = await _lobbyRepository.GetById(id);
-            
-            if(obj == null) return RedirectToAction("Index");
+            var obj = await _lobbyService.GetById(id);
+
+            if (obj == null) return RedirectToAction("Index");
 
             LobbyVM lobbyVm = new LobbyVM()
             {
@@ -99,19 +94,18 @@ namespace TeamFinderPL.Controllers
                         Value = bg.Id.ToString(),
                     })
             };
-        
+
             return View(lobbyVm);
         }
-        
+
         public IActionResult UpdateLobby(LobbyVM obj)
         {
             if (ModelState.IsValid)
             {
-                _lobbyRepository.Update(obj.Lobby);
-                _lobbyRepository.Save();
+                _lobbyService.Update(obj.Lobby);
                 return RedirectToAction("Index");
             }
-            
+
             return RedirectToAction("Update");
         }
     }
