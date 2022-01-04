@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TeamFinder.Models.ViewModels;
+using TeamFinderBL.Interfaces;
 using TeamFinderDAL;
 using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
@@ -15,18 +16,20 @@ namespace TeamFinderPL.Controllers
 {
     public class LobbyController : Controller
     {
-        private readonly ILobbyRepository _lobbyRepository;
+        private readonly ILobbyService _lobbyService;
         private readonly IBoardGameRepository _boardGameRepository;
 
-        public LobbyController(ILobbyRepository lobbyRepository, IBoardGameRepository boardGameRepository)
+        public LobbyController(
+            ILobbyService lobbyService,
+            IBoardGameRepository boardGameRepository)
         {
-            _lobbyRepository = lobbyRepository;
+            _lobbyService = lobbyService;
             _boardGameRepository = boardGameRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Lobby> lobbyList = await _lobbyRepository.GetAll();
+            var lobbyList = (await _lobbyService.GetAllLobbies());
 
             foreach (var lobby in lobbyList)
             {
@@ -59,8 +62,7 @@ namespace TeamFinderPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                _lobbyRepository.Create(obj.Lobby);
-                _lobbyRepository.Save();
+                _lobbyService.CreateLobby(obj.Lobby);
                 return RedirectToAction("Index");
             }
 
@@ -71,14 +73,12 @@ namespace TeamFinderPL.Controllers
         // [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var obj = await _lobbyRepository.GetById(id);
             if (ModelState.IsValid)
             {
-                _lobbyRepository.Delete(obj);
-                _lobbyRepository.Save();
+                var result = _lobbyService.DeleteLobby(id);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");   
         }
 
         public async Task<IActionResult> Update(int id)
