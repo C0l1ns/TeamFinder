@@ -29,7 +29,7 @@ namespace TeamFinder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TeamFinderDbContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddDataProvider();
             services.AddServiceProvider();
