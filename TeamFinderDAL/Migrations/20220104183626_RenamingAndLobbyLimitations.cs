@@ -2,7 +2,7 @@
 
 namespace TeamFinderDAL.Migrations
 {
-    public partial class AddedLobbyLimitation : Migration
+    public partial class RenamingAndLobbyLimitations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

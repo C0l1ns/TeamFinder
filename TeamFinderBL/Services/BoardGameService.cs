@@ -1,35 +1,61 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeamFinderBL.Interfaces;
 using TeamFinderDAL.Entities;
+using TeamFinderDAL.Interfaces;
 
 namespace TeamFinderBL.Services
 {
     public class BoardGameService : IBoardGameService
     {
-        public int Create(BoardGame entity)
+        private readonly IBoardGameRepository _boardGameRepository;
+
+        public BoardGameService(IBoardGameRepository boardGameRepository)
         {
-            throw new System.NotImplementedException();
+            _boardGameRepository = boardGameRepository;
+        }
+        public int Create(BoardGame boardGame)
+        {
+            if (boardGame == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            _boardGameRepository.Create(boardGame);
+            _boardGameRepository.Save();
+            return boardGame.Id;
         }
 
-        public Task<IEnumerable<BoardGame>> GetAll()
+        public async Task<IEnumerable<BoardGame>> GetAll()
         {
-            throw new System.NotImplementedException();
+            var boardGames = await _boardGameRepository.GetAll();
+            return boardGames;
         }
 
-        public Task<int> Delete(int id)
+        public async Task<int> Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var boardGame = await _boardGameRepository.GetById(id);
+            if (boardGame == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            _boardGameRepository.Delete(boardGame);
+            _boardGameRepository.Save();
+            return boardGame.Id;
         }
 
-        public void Update(BoardGame entity)
+        public void Update(BoardGame boardGame)
         {
-            throw new System.NotImplementedException();
+            _boardGameRepository.Update(boardGame);
+            _boardGameRepository.Save();
         }
 
-        public Task<BoardGame> GetById(int id)
+        public async Task<BoardGame> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            var boardGame = await _boardGameRepository.GetById(id);
+            return boardGame;
         }
     }
 }

@@ -9,8 +9,8 @@ using TeamFinderDAL;
 namespace TeamFinderDAL.Migrations
 {
     [DbContext(typeof(TeamFinderDbContext))]
-    [Migration("20211216174227_ChangeNaming")]
-    partial class ChangeNaming
+    [Migration("20220104183626_RenamingAndLobbyLimitations")]
+    partial class RenamingAndLobbyLimitations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,12 @@ namespace TeamFinderDAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<byte>("Difficulty")
-                        .HasMaxLength(5)
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<byte>("MaxNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<byte>("MinNumberOfPlayers")
                         .HasColumnType("tinyint unsigned");
 
                     b.Property<string>("Name")
@@ -76,10 +81,11 @@ namespace TeamFinderDAL.Migrations
                     b.Property<int>("HostedGameId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
+                    b.Property<byte>("MaxNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<byte>("MinNumberOfPlayers")
+                        .HasColumnType("tinyint unsigned");
 
                     b.HasKey("Id");
 
@@ -153,6 +159,9 @@ namespace TeamFinderDAL.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("double");
 
                     b.Property<string>("Username")
                         .IsRequired()

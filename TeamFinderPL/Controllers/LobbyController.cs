@@ -24,14 +24,14 @@ namespace TeamFinderPL.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var lobbyList = (await _lobbyService.GetAll());
+            var lobbies = await _lobbyService.GetAll();
 
-            foreach (var lobby in lobbyList)
+            foreach (var lobby in lobbies)
             {
                 lobby.HostedGame = await _boardGameRepository.GetById(lobby.HostedGameId);
             }
 
-            return View(lobbyList);
+            return View(lobbies);
         }
 
         public IActionResult Create()
@@ -55,22 +55,19 @@ namespace TeamFinderPL.Controllers
         [HttpPost]
         public IActionResult PostLobby(LobbyVM obj)
         {
-            if (ModelState.IsValid)
-            {
-                _lobbyService.Create(obj.Lobby);
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("Create");
+            if (!ModelState.IsValid) return RedirectToAction("Create");
+            
+            _lobbyService.Create(obj.Lobby);
+            return RedirectToAction("Index");
         }
 
 
         // [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteLobby(int id)
         {
             if (ModelState.IsValid)
             {
-                var result = _lobbyService.Delete(id);
+                await _lobbyService.Delete(id);
             }
 
             return RedirectToAction("Index");
