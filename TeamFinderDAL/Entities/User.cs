@@ -5,7 +5,7 @@ namespace TeamFinderDAL.Entities
 {
     public class User : IdentityUser, IEntity
     {
-        public int Id { get; set; }
+        public new int Id { get; set; }
 
         public string Username { get; set; }
 
@@ -15,7 +15,7 @@ namespace TeamFinderDAL.Entities
 
         public string Password { get; set; }
 
-        public string Email { get; set; }
+        public new string Email { get; set; }
 
         public double Rating { get; set; }
 

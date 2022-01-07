@@ -14,7 +14,7 @@ namespace TeamFinderDAL
             
         }
 
-        public DbSet<User> Users { get; set; }
+        // public DbSet<User> Users { get; set; }
         public DbSet<BoardGame> BoardGames { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Lobby> Lobbies { get; set; }
