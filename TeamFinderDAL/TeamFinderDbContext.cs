@@ -26,7 +26,9 @@ namespace TeamFinderDAL
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new LobbyConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
-            
+
+
+
             base.OnModelCreating(modelBuilder);
         }
     }

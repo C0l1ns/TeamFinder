@@ -29,14 +29,17 @@ namespace TeamFinder.Models.Configurations
 
             builder.HasOne(l => l.Host)
                 .WithMany()
-                .HasForeignKey(l => l.HostId);
+                .HasForeignKey(l => l.HostId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(l => l.HostedGame)
                 .WithMany()
-                .HasForeignKey(l => l.HostedGameId);
+                .HasForeignKey(l => l.HostedGameId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasMany(l => l.Messages)
-                .WithOne(m => m.Lobby);
+                .WithOne(m => m.Lobby)
+                .OnDelete(DeleteBehavior.NoAction);
 
         }
     }
