@@ -20,7 +20,7 @@ namespace TeamFinderDAL.Entities
         
         public IList<User> ConnectedUsers { get; set; }
 
-        public int HostId { get; set; }
+        public string HostId { get; set; }
 
         public User Host { get; set; }
         
