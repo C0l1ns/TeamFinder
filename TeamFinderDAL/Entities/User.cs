@@ -2,7 +2,7 @@
 
 namespace TeamFinderDAL.Entities
 {
-    public class User : IEntity
+    public class User : IdentityUser ,IEntity
     {
         public int Id { get; set; }
         
