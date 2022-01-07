@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Org.BouncyCastle.Crypto.Tls;
 using TeamFinderDAL.Entities;
 
 namespace TeamFinderDAL.Interfaces

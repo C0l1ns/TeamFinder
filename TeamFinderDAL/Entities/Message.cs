@@ -15,7 +15,7 @@ namespace TeamFinderDAL.Entities
         
         public Lobby Lobby { get; set; }
 
-        public int SenderId { get; set; }
+        public string SenderId { get; set; }
 
         public User Sender { get; set; }
 

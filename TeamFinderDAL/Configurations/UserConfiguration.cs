@@ -12,8 +12,8 @@ namespace TeamFinder.Models.Configurations
         {
             builder.HasKey(u => u.Id);
 
-            builder.Property(u => u.Username)
-                .IsRequired();
+            // builder.Property(u => u.Username)
+            //     .IsRequired();
             
             builder.Property(u => u.DisplayUsername);
 
