@@ -75,14 +75,13 @@ namespace TeamFinderPL.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(AccountLoginViewModel model, string returnUrl)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(AccountLoginViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
-
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                
 
                 if (result.Succeeded)
                 {
@@ -95,10 +94,15 @@ namespace TeamFinderPL.Controllers
             return View(model);
         }
 
-        // [Authorize]
-        // public IActionResult Logout()
-        // {
-        //     return RedirectToAction("Login");
-        // }
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+        
+        
     }
 }
