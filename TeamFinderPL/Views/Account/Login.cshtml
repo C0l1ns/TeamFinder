@@ -1,13 +1,13 @@
-﻿@model TeamFinderDAL.Models.ViewModels.AccountRegisterViewModel
+﻿@model TeamFinderDAL.Models.ViewModels.AccountLoginViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Login";
 }
 
 <h2 class="my-5 text-center">
-    Registration Form
+    Login Form
 </h2>
 <div class="my-5">
-    <form enctype="multipart/form-data" asp-action="Register" asp-controller="Account" method="post">
+    <form enctype="multipart/form-data" asp-action="Login" asp-controller="Account" method="post">
         <div class="form-row">
             <div class="form-group col-12">
                 <label asp-for="Username"></label>
@@ -15,23 +15,7 @@
                 <span asp-validation-for="Username" hidden class="small text-danger"></span>
             </div>
         </div>
-
-        <div class="form-row">
-            <div class="form-group col-12">
-                <label asp-for="DisplayUsername"></label>
-                <input type="text" class="form-control" asp-for="DisplayUsername"/>
-                <span asp-validation-for="DisplayUsername" hidden class="small text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-12">
-                <label asp-for="Email"></label>
-                <input type="email" class="form-control" asp-for="Email"/>
-                <span asp-validation-for="Email" hidden class="small text-danger"></span>
-            </div>
-        </div>
-
+        
         <div class="form-row">
             <div class="form-group col-12">
                 <label asp-for="Password"></label>
@@ -42,9 +26,9 @@
 
         <div class="form-row">
             <div class="form-group col-12">
-                <label asp-for="ConfirmPassword"></label>
-                <input class="form-control" asp-for="ConfirmPassword"/>
-                <span asp-validation-for="ConfirmPassword" hidden class="small text-danger"></span>
+                <label asp-for="RememberMe"></label>
+                <input class="custom-checkbox" asp-for="RememberMe"/>
+                <span asp-validation-for="RememberMe" hidden class="small text-danger"></span>
             </div>
         </div>
         <div class="form-row">

@@ -66,37 +66,34 @@ namespace TeamFinderPL.Controllers
             return View(model);
         }
 
+        [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl = null)
+        public IActionResult Login()
         {
-            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(AccountLoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
 
-        // public IActionResult Login(User model, string returnUrl)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return View(model);
-        //     }
-        //
-        //     _signInManager.SignOutAsync();
-        //     var result = signin.PasswordSignIn(
-        //         model.Username, model.Password, isPersistent: model.RememberME,
-        //         lockoutOnFailure: false);
-        //
-        //     // This doesn't count login failures towards account lockout
-        //     // To enable password failures to trigger account lockout, change to shouldLockout: true
-        //
-        //     if (result.Succeeded)
-        //     {
-        //         return RedirectToAction("Index", "Home");
-        //     }
-        //
-        //     ModelState.AddModelError("", "Invalid username/password.");
-        //     return View(model);
-        // }
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "Invalid username/password.");
+               
+            }
+            return View(model);
+        }
 
         // [Authorize]
         // public IActionResult Logout()
