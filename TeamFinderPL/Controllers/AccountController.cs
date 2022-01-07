@@ -26,13 +26,13 @@ namespace TeamFinderPL.Controllers
         }
 
 
-        [AllowAnonymous]
-        public IActionResult Create()
-        {
-            User user = new User();
-
-            return View(user);
-        }
+        // [AllowAnonymous]
+        // public IActionResult Create()
+        // {
+        //     User user = new User();
+        //
+        //     return View(user);
+        // }
 
         [AllowAnonymous]
         [HttpGet]
@@ -41,46 +41,40 @@ namespace TeamFinderPL.Controllers
             return View();
         }
 
-        // [AllowAnonymous]
-        // [HttpPost]
-        // public async Task<IActionResult> Register(AccountRegisterViewModel model)
-        // {
-        //
-        //     if (ModelState.IsValid)
-        //     {
-        //         User myUser = new User
-        //         {
-        //             Username = model.Username, Email = model.Email, Password = model.Password,
-        //             DisplayUsername = model.DisplayUsername
-        //         };
-        //         _userRepository.Create(myUser);
-        //         _userRepository.Save();
-        //         IdentityUser genericUser = new IdentityUser { UserName = model.Username, Email = model.Email};
-        //
-        //         var result = await _userManager.CreateAsync(genericUser, model.Password);
-        //
-        //         if (result.Succeeded)
-        //         {
-        //             await _signInManager.SignInAsync(genericUser, isPersistent: false);
-        //             return RedirectToAction("Index", "Home");
-        //         }
-        //
-        //         foreach (var error in result.Errors)
-        //         {
-        //             ModelState.AddModelError("", error.Description);
-        //         }
-        //         
-        //     }
-        //
-        //
-        //     return View(model);
-        // }
-
         [AllowAnonymous]
-        public IActionResult Login(string username, string password)
+        [HttpPost]
+        public async Task<IActionResult> Register(AccountRegisterViewModel model)
         {
-            return View();
+        
+            if (ModelState.IsValid)
+            {
+
+                User user = new User { UserName = model.Username, Email = model.Email, Password = model.Password};
+        
+                var result = await _userManager.CreateAsync(user, model.Password);
+        
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+        
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                
+            }
+        
+        
+            return View(model);
         }
+
+        // [AllowAnonymous]
+        // public IActionResult Login(string username, string password)
+        // {
+        //     return View();
+        // }
 
 
         // public IActionResult Login(User model, string returnUrl)
@@ -107,10 +101,10 @@ namespace TeamFinderPL.Controllers
         //     return View(model);
         // }
 
-        [Authorize]
-        public IActionResult Logout()
-        {
-            return RedirectToAction("Login");
-        }
+        // [Authorize]
+        // public IActionResult Logout()
+        // {
+        //     return RedirectToAction("Login");
+        // }
     }
 }
