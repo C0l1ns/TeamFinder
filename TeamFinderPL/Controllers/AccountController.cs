@@ -14,12 +14,11 @@ namespace TeamFinderPL.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-
-        public AccountController(UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -45,36 +44,34 @@ namespace TeamFinderPL.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(AccountRegisterViewModel model)
         {
-        
             if (ModelState.IsValid)
             {
+                User user = new User {UserName = model.Username, Email = model.Email, Password = model.Password};
 
-                User user = new User { UserName = model.Username, Email = model.Email, Password = model.Password};
-        
                 var result = await _userManager.CreateAsync(user, model.Password);
-        
+
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-        
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-                
             }
-        
-        
+
+
             return View(model);
         }
 
-        // [AllowAnonymous]
-        // public IActionResult Login(string username, string password)
-        // {
-        //     return View();
-        // }
+        [AllowAnonymous]
+        public IActionResult Login(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
 
 
         // public IActionResult Login(User model, string returnUrl)

@@ -57,6 +57,7 @@ namespace TeamFinder
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
