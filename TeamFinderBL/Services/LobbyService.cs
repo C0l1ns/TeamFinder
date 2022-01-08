@@ -11,6 +11,7 @@ namespace TeamFinderBL.Services
     {
         private readonly ILobbyRepository _lobbyRepository;
 
+
         public LobbyService(
             ILobbyRepository lobbyRepository)
         {

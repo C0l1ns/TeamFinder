@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TeamFinder.Models.ViewModels;
@@ -13,13 +15,16 @@ namespace TeamFinderPL.Controllers
     {
         private readonly ILobbyService _lobbyService;
         private readonly IBoardGameRepository _boardGameRepository;
+        private readonly UserManager<User> _userManager;
 
         public LobbyController(
             ILobbyService lobbyService,
-            IBoardGameRepository boardGameRepository)
+            IBoardGameRepository boardGameRepository,
+            UserManager<User> userManager)
         {
             _lobbyService = lobbyService;
             _boardGameRepository = boardGameRepository;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -53,10 +58,13 @@ namespace TeamFinderPL.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostLobby(LobbyVM obj)
+        [Authorize]
+        public async Task< IActionResult> PostLobby(LobbyVM obj)
         {
             if (!ModelState.IsValid) return RedirectToAction("Create");
-            
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            obj.Lobby.Host = user;
+            obj.Lobby.HostId = user.Id;
             _lobbyService.Create(obj.Lobby);
             return RedirectToAction("Index");
         }

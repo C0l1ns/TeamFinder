@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TeamFinderBL.Interfaces;
 using TeamFinderDAL.Entities;
@@ -30,6 +31,7 @@ namespace TeamFinderPL.Controllers
         }
 
         [HttpPost]
+        
         public IActionResult PostBoardGame(BoardGame boardGame)
         {
             if (!ModelState.IsValid) return RedirectToAction("Create");

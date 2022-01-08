@@ -8,7 +8,8 @@ using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
 using TeamFinderDAL.Models.ViewModels;
 using TeamFinderDAL.Repositories;
-
+using TeamFinderBL.Interfaces;
+using System.Collections.Generic;
 
 namespace TeamFinderPL.Controllers
 {
@@ -16,12 +17,15 @@ namespace TeamFinderPL.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private IAccountService _accountService { get; set; }
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+           IAccountService accountService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _accountService = accountService;
         }
 
 
@@ -102,7 +106,49 @@ namespace TeamFinderPL.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-        
-        
+
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult CreateRole()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> CreateRole(string roleName)
+        {
+            await _accountService.CreateRole(roleName);
+            return RedirectToAction(nameof(AccountController.GetRoles), "Account");
+        }
+
+        [HttpGet]
+        [Authorize]
+
+        public IActionResult AssignRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+
+        public IActionResult AssignRole(AssignedRoles assignedRoles)
+        {
+            _accountService.AssignUserToRoles(assignedRoles);
+            return RedirectToAction(nameof(AccountController.GetRoles), "Account");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetRoles()
+        {
+            var roles = (await _accountService.GetRoles()).Select(x => new Role { RoleName = x.Name });
+            return View(roles);
+        }
+
+
     }
 }

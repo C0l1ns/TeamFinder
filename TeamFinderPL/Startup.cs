@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TeamFinderBL.Interfaces;
+using TeamFinderBL.Services;
 using TeamFinderDAL;
 using TeamFinderDAL.Entities;
 using TeamFinderDAL.Interfaces;
@@ -38,6 +40,9 @@ namespace TeamFinder
             services.AddDataProvider();
             services.AddServiceProvider();
             services.AddControllersWithViews();
+
+
+            services.AddScoped<IAccountService, AccountService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
