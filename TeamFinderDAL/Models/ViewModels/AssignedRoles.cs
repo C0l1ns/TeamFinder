@@ -12,6 +12,5 @@ namespace TeamFinderDAL.Models.ViewModels
     {
         public string UserName { get; set; }
         public string[] Roles { get; set; }
-        public Roles Roles { get; set; }
     }
 }
