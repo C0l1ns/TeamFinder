@@ -26,19 +26,7 @@ namespace TeamFinderBL.Services
         }
         public async Task AssignUserToRoles(AssignedRoles assignedRoles)
         {
-            var user = _userManager.Users.SingleOrDefault(u => u.UserName == assignedRoles.UserName);
-            var roles = _roleManager.Roles
-                .ToList()
-                .Where(r => assignedRoles.Roles.Contains(r.Name, StringComparer.OrdinalIgnoreCase))
-                .Select(r => r.NormalizedName)
-                .ToList();
-
-            var result = await _userManager.AddToRolesAsync(user, roles);
-
-            if (!result.Succeeded)
-            {
-                throw new System.Exception(string.Join(';', result.Errors.Select(x => x.Description)));
-            }
+            
         }
 
         public async Task CreateRole(string roleName)

@@ -10,22 +10,26 @@ using TeamFinderDAL.Models.ViewModels;
 using TeamFinderDAL.Repositories;
 using TeamFinderBL.Interfaces;
 using System.Collections.Generic;
+using System;
 
 namespace TeamFinderPL.Controllers
 {
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
         private IAccountService _accountService { get; set; }
 
         public AccountController(UserManager<User> userManager,
             SignInManager<User> signInManager,
+            RoleManager<IdentityRole> roleManager,
            IAccountService accountService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _accountService = accountService;
+            _roleManager = roleManager;
         }
 
 
@@ -135,9 +139,21 @@ namespace TeamFinderPL.Controllers
         [HttpPost]
         [Authorize]
 
-        public IActionResult AssignRole(AssignedRoles assignedRoles)
+        public async Task<IActionResult> AssignRole(AssignedRoles assignedRoles)
         {
-            _accountService.AssignUserToRoles(assignedRoles);
+            var user = _userManager.Users.SingleOrDefault(u => u.UserName == assignedRoles.UserName);
+            var roles = _roleManager.Roles
+                .ToList()
+                .Where(r => assignedRoles.Roles.Contains(r.Name, StringComparer.OrdinalIgnoreCase))
+                .Select(r => r.NormalizedName)
+                .ToList();
+
+            var result = await _userManager.AddToRolesAsync(user, roles);
+
+            if (!result.Succeeded)
+            {
+                throw new System.Exception(string.Join(';', result.Errors.Select(x => x.Description)));
+            }
             return RedirectToAction(nameof(AccountController.GetRoles), "Account");
         }
 

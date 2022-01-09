@@ -34,8 +34,11 @@ namespace TeamFinder
             services.AddDbContext<TeamFinderDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
-            
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<TeamFinderDbContext>();
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<TeamFinderDbContext>();
+                
             
             services.AddDataProvider();
             services.AddServiceProvider();
