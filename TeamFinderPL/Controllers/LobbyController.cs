@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +21,8 @@ namespace TeamFinderPL.Controllers
         public LobbyController(
             ILobbyService lobbyService,
             IBoardGameRepository boardGameRepository,
-            UserManager<User> userManager)
+            UserManager<User> userManager
+            )
         {
             _lobbyService = lobbyService;
             _boardGameRepository = boardGameRepository;
@@ -70,17 +72,26 @@ namespace TeamFinderPL.Controllers
         }
 
 
-        // [HttpDelete]
+        [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> DeleteLobby(int id)
         {
-            if (ModelState.IsValid)
+            var lobby = await  _lobbyService.GetById(id);
+            if (User.IsInRole("admin") || (await _userManager.FindByNameAsync(User.Identity.Name)).Id == lobby.HostId)
             {
-                await _lobbyService.Delete(id);
+                
+                if (ModelState.IsValid)
+                {
+                    await _lobbyService.Delete(lobby.Id);
+                }
             }
+            
 
             return RedirectToAction("Index");
         }
 
+
+        [Authorize]
         public async Task<IActionResult> Update(int id)
         {
             var obj = await _lobbyService.GetById(id);
@@ -103,6 +114,7 @@ namespace TeamFinderPL.Controllers
             return View(lobbyVm);
         }
 
+        [Authorize]
         public IActionResult UpdateLobby(LobbyVM obj)
         {
             if (ModelState.IsValid)
@@ -112,6 +124,58 @@ namespace TeamFinderPL.Controllers
             }
 
             return RedirectToAction("Update");
+        }
+
+        [Authorize]
+        public async Task< IActionResult> Details(int id)
+        {
+            var lobby = await _lobbyService.GetById(id);
+            
+
+            if(lobby.ConnectedUsers == null)
+            {
+                lobby.ConnectedUsers = new List<User>();
+            }
+
+            if(!lobby.ConnectedUsers.Any(x => x.UserName == User.Identity.Name))
+            {
+                lobby.ConnectedUsers.Add(await _userManager.FindByNameAsync(User.Identity.Name));
+                _lobbyService.Update(lobby);
+            }
+
+            
+           
+            if (lobby == null) return RedirectToAction("Index");
+
+
+
+            return View(lobby);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> LeaveLobby(int id)
+        {
+            var lobby = await _lobbyService.GetById(id);
+
+
+            if (lobby.ConnectedUsers == null)
+            {
+                lobby.ConnectedUsers = new List<User>();
+            }
+
+            if (!lobby.ConnectedUsers.Any(x => x.UserName == User.Identity.Name))
+            {
+                lobby.ConnectedUsers.Add(await _userManager.FindByNameAsync(User.Identity.Name));
+                _lobbyService.Update(lobby);
+            }
+
+
+
+            if (lobby == null) return RedirectToAction("Index");
+
+
+
+            return View(lobby);
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamFinderDAL;
 
 namespace TeamFinderDAL.Migrations
 {
     [DbContext(typeof(TeamFinderDbContext))]
-    partial class TeamFinderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220124090604_fix_lobby")]
+    partial class fix_lobby
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,36 +34,6 @@ namespace TeamFinderDAL.Migrations
                     b.HasIndex("TagId");
 
                     b.ToTable("BoardGame-Tag");
-                });
-
-            modelBuilder.Entity("BoardGameUser", b =>
-                {
-                    b.Property<string>("FavoredByUsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("FavoriteGamesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FavoredByUsersId", "FavoriteGamesId");
-
-                    b.HasIndex("FavoriteGamesId");
-
-                    b.ToTable("BoardGameUser");
-                });
-
-            modelBuilder.Entity("LobbyUser", b =>
-                {
-                    b.Property<int>("ConnectedLobbiesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConnectedUsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ConnectedLobbiesId", "ConnectedUsersId");
-
-                    b.HasIndex("ConnectedUsersId");
-
-                    b.ToTable("LobbyUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -384,19 +356,49 @@ namespace TeamFinderDAL.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("UserUser", b =>
+            modelBuilder.Entity("User-BoardGame", b =>
                 {
-                    b.Property<string>("FriendOfId")
+                    b.Property<int>("BGameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("FriendsId")
+                    b.HasKey("BGameId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("User-BoardGame");
+                });
+
+            modelBuilder.Entity("User-Friend", b =>
+                {
+                    b.Property<string>("FriendId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("FriendOfId", "FriendsId");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("FriendsId");
+                    b.HasKey("FriendId", "UserId");
 
-                    b.ToTable("UserUser");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("User-Friend");
+                });
+
+            modelBuilder.Entity("User-Lobby", b =>
+                {
+                    b.Property<int>("LobbyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LobbyId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("User-Lobby");
                 });
 
             modelBuilder.Entity("BoardGame-Tag", b =>
@@ -410,36 +412,6 @@ namespace TeamFinderDAL.Migrations
                     b.HasOne("TeamFinderDAL.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BoardGameUser", b =>
-                {
-                    b.HasOne("TeamFinderDAL.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("FavoredByUsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TeamFinderDAL.Entities.BoardGame", null)
-                        .WithMany()
-                        .HasForeignKey("FavoriteGamesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LobbyUser", b =>
-                {
-                    b.HasOne("TeamFinderDAL.Entities.Lobby", null)
-                        .WithMany()
-                        .HasForeignKey("ConnectedLobbiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TeamFinderDAL.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("ConnectedUsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -530,18 +502,48 @@ namespace TeamFinderDAL.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("UserUser", b =>
+            modelBuilder.Entity("User-BoardGame", b =>
                 {
-                    b.HasOne("TeamFinderDAL.Entities.User", null)
+                    b.HasOne("TeamFinderDAL.Entities.BoardGame", null)
                         .WithMany()
-                        .HasForeignKey("FriendOfId")
+                        .HasForeignKey("BGameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TeamFinderDAL.Entities.User", null)
                         .WithMany()
-                        .HasForeignKey("FriendsId")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("User-Friend", b =>
+                {
+                    b.HasOne("TeamFinderDAL.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeamFinderDAL.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("User-Lobby", b =>
+                {
+                    b.HasOne("TeamFinderDAL.Entities.Lobby", null)
+                        .WithMany()
+                        .HasForeignKey("LobbyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeamFinderDAL.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

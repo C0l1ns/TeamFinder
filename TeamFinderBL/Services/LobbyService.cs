@@ -39,6 +39,9 @@ namespace TeamFinderBL.Services
         public async Task<int> Delete(int id)
         {
             var lobby = await _lobbyRepository.GetById(id);
+
+
+
             if (lobby == null)
             {
                 throw new NullReferenceException();
@@ -58,6 +61,7 @@ namespace TeamFinderBL.Services
         public async Task<Lobby> GetById(int id)
         {
             var lobby = await _lobbyRepository.GetById(id);
+           
             return lobby;
         }
     }

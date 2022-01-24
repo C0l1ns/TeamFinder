@@ -18,7 +18,7 @@ namespace TeamFinderDAL.Entities
         
         public byte MaxNumberOfPlayers { get; set; }
         
-        public IList<User> ConnectedUsers { get; set; }
+        public List<User> ConnectedUsers { get; set; }
 
         public string HostId { get; set; }
 

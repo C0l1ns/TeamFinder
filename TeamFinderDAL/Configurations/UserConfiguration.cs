@@ -29,7 +29,7 @@ namespace TeamFinder.Models.Configurations
             builder.Property(u => u.Rating)
                 .IsRequired();
 
-            
+
             builder.HasMany(u => u.ConnectedLobbies)
                 .WithMany(l => l.ConnectedUsers)
                 .UsingEntity<Dictionary<string, object>>("User-Lobby",
@@ -50,6 +50,6 @@ namespace TeamFinder.Models.Configurations
                 u => u.HasOne<User>().WithMany().HasForeignKey("UserId"),
                 u => u.HasOne<User>().WithMany().HasForeignKey("FriendId"),
                 u => u.ToTable("User-Friend"));
-        } 
+        }
     }
 }
