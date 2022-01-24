@@ -157,25 +157,10 @@ namespace TeamFinderPL.Controllers
         {
             var lobby = await _lobbyService.GetById(id);
 
+            lobby.ConnectedUsers.Remove(await _userManager.FindByNameAsync(User.Identity.Name));
+            _lobbyService.Update(lobby);
 
-            if (lobby.ConnectedUsers == null)
-            {
-                lobby.ConnectedUsers = new List<User>();
-            }
-
-            if (!lobby.ConnectedUsers.Any(x => x.UserName == User.Identity.Name))
-            {
-                lobby.ConnectedUsers.Add(await _userManager.FindByNameAsync(User.Identity.Name));
-                _lobbyService.Update(lobby);
-            }
-
-
-
-            if (lobby == null) return RedirectToAction("Index");
-
-
-
-            return View(lobby);
+            return RedirectToAction("Index");
         }
     }
 }
