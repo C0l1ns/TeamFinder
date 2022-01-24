@@ -24,9 +24,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Lobby" asp-action="Index">Lobbies</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="BoardGame" asp-action="Index">Board Games</a>
-                    </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="BoardGame" asp-action="Index">Board Games</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>

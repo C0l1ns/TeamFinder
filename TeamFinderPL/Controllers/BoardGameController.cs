@@ -16,6 +16,7 @@ namespace TeamFinderPL.Controllers
             _boardGameService = boardGameService;
         }
         
+        [Authorize(Roles ="admin")]
         public async Task<IActionResult> Index()
         {
            var boardGames = await _boardGameService.GetAll();
@@ -23,6 +24,7 @@ namespace TeamFinderPL.Controllers
             return View(boardGames);
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             BoardGame boardGame = new BoardGame();
@@ -30,8 +32,8 @@ namespace TeamFinderPL.Controllers
             return View(boardGame);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
-        
         public IActionResult PostBoardGame(BoardGame boardGame)
         {
             if (!ModelState.IsValid) return RedirectToAction("Create");
@@ -39,7 +41,8 @@ namespace TeamFinderPL.Controllers
             _boardGameService.Create(boardGame);
             return RedirectToAction("Index");
         }
-        
+
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteBoardGame(int id)
         {
             if (ModelState.IsValid)
@@ -49,7 +52,8 @@ namespace TeamFinderPL.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update(int id)
         {
             var boardGame = await _boardGameService.GetById(id);
@@ -58,7 +62,8 @@ namespace TeamFinderPL.Controllers
 
             return View(boardGame);
         }
-        
+
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateBoardGame(BoardGame boardGame)
         {
             if (ModelState.IsValid)
