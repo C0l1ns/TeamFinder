@@ -1,0 +1,78 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
+
+#body_index {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: rgb(220 220 220);
+}
+
+#head {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://res.cloudinary.com/fleetnation/image/private/c_fit,w_1120/g_south,l_text:style_gothic2:%C2%A9%20Eric%20Lafforgue,o_20,y_10/g_center,l_watermark4,o_25,y_50/v1518607425/ntpfrogibtwprxalqmm2.jpg);
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+    height: 40vh;
+}
+
+.title {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.index_h1 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3rem;
+    white-space: nowrap;
+}
+
+.index_h2 {
+    font-size: 2rem;
+    text-align:center;
+}
+
+.index_p {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+#index_main {
+    box-shadow: 20px -10px 20px 5px rgba(0, 0, 0, .5);
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: rgb(33 92 255);
+    padding-inline: 30px;
+    padding-bottom:10px;
+}
+
+.xyz {
+    background-size: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.btn-circle.btn-xl {
+    width: 15vw;
+    height: 15vw;
+    padding: 10px 16px;
+    border-radius: 180px;
+    font-size: 12px;
+    text-align: center;
+}
+#ButtonHolder {
+    width: 100vw;
+    align-content:center;
+    position: fixed;
+}
+#CirleButton{
+    font-size: 70px;
+}
+#PositionController{
+    margin-left:auto;
+    margin-right:auto;
+    width:15vw;
+}

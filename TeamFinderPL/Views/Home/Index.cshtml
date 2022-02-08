@@ -2,7 +2,74 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    #body_index {
+        font-family: 'Source Sans Pro', sans-serif;
+        background-color: rgb(220 220 220);
+    }
+    #head {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://upload.wikimedia.org/wikipedia/commons/d/d9/Opening_chess_position_from_black_side.jpg);
+        background-size: cover;  
+        margin-right: 100vw;
+        width: 57.5vw;
+        height: 40vh;
+    }
+    .title {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+    }
+    .index_h1 {
+        text-transform: uppercase;
+        margin: 0;
+        padding-top: 7vw;
+        font-size: 3rem;
+        white-space: nowrap;
+    }
+
+    
+    .btn-circle.btn-xl {
+        width: 15vw;
+        height: 15vw;
+        padding: 10px 16px;
+        border-radius: 180px;
+        font-size: 12px;
+        text-align: center;
+    }
+    #CirleButton{
+        font-size: 70px;
+    }
+    #PositionController{
+        padding-top: 1vw;
+        margin-left:auto;
+        margin-right:auto;
+        width:15vw;
+    }
+    
+    
+</style>
+
+
+<div id="head">
+    <div class="title">
+        <h1 class = "index_h1">Team Finder</h1>
+    </div>
 </div>
+
+@* <main id="index_main"> *@
+@*     <h2 class = "index_h2">Info</h2> *@
+@*     <p class="index_p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa facilis, labore debitis nesciunt ipsam odio corporis architecto reiciendis voluptas ab quibusdam ratione rerum tempore voluptatibus libero cumque dignissimos vero hic!</p> *@
+@* </main> *@
+
+    <div id="ButtonHolder">
+        <div id="PositionController">
+            <button id="CirleButton" type="button" class="btn btn-primary btn-circle btn-xl">Find!</button>
+        </div>
+
+
+
+
+    </div>
