@@ -55,7 +55,7 @@
 
 <div id="head">
     <div class="title">
-        <h1 class = "index_h1">Team Finder</h1>
+        <h1 class="index_h1">Team Finder</h1>
     </div>
 </div>
 
@@ -64,12 +64,12 @@
 @*     <p class="index_p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa facilis, labore debitis nesciunt ipsam odio corporis architecto reiciendis voluptas ab quibusdam ratione rerum tempore voluptatibus libero cumque dignissimos vero hic!</p> *@
 @* </main> *@
 
-    <div id="ButtonHolder">
-        <div id="PositionController">
-            <button id="CirleButton" type="button" class="btn btn-primary btn-circle btn-xl">Find!</button>
-        </div>
-
-
-
-
+<div id="ButtonHolder">
+    <div id="PositionController">
+        <button id="CirleButton" type="button" class="btn btn-primary btn-circle btn-xl">
+            <a asp-controller="BoardGame" asp-action="Update" style="color: white; text-decoration: none;">Find!</a>
+        </button>
     </div>
+
+
+</div>

@@ -164,7 +164,5 @@ namespace TeamFinderPL.Controllers
             var roles = (await _accountService.GetRoles()).Select(x => new Role { RoleName = x.Name });
             return View(roles);
         }
-
-
     }
 }

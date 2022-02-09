@@ -1,0 +1,38 @@
+﻿@model TeamFinderDAL.Entities.User
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+
+<div>
+    <h4>Lobby</h4>
+    <hr />
+    <dl class="row">
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DisplayUsername)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DisplayUsername)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+
+
+    </dl>
+
+</div>
